@@ -9,7 +9,6 @@ import "dotenv/config";
 AppDataSource.initialize()
   .then(async () => {
     const app = express();
-    const port = 3000;
     // redisClient.on("error", (error) => {
     //   console.log(error);
     // });
@@ -18,9 +17,9 @@ AppDataSource.initialize()
     app.use("/api/v1", router);
 
     cloudinary.config();
-    app.listen(port, async () => {
+    app.listen(process.env.PORT, async () => {
       // await redisClient.connect();
-      console.log(`Server running on port ${port}`);
+      console.log(`Server running on port ${process.env.PORT}`);
     });
   })
   .catch((error) => console.log(error));
